@@ -11,6 +11,8 @@ A generic mods installer, that was modeled after this Nexus Mods tweaks collecti
 2. Download `mod_installer.py` and put it in the `Cubic_Odyssey` directory created in step 1
 3. Download all files listed here [SkyPhoenixMods - Cubic Odyssey - Tweakers](https://www.nexusmods.com/cubicodyssey/mods/5?tab=files) and put those zip files in the `Cubic_Odyssey` directory created in step 1
 4. Run syntax: python mod_installer.py [REQUIRED:Game_directory_data_location] [OPTIONAL:Add_Fresh_configs_directory_backup]
+5. After the script runs, run the game.
+   - Note: you will see this message as the last message for a successful install: Mod installation completed successfully
 
 Note: First run will back up the current data\configs directory.
 
