@@ -1,12 +1,13 @@
 # Overview
 A generic mods installer, that was modeled after this Nexus Mods tweaks collection: [SkyPhoenixMods - Cubic Odyssey - Tweakers](https://www.nexusmods.com/cubicodyssey/mods/5?tab=files)
+- This mods script uses the installation.txt file from SkyPhoenixMods's mods collection to install mods to the Cubic Odyssey game directory -> data -> configs location.
 
 # Prerequisites
 - Install Python
 - Tested on Windows 11
 
 # How to
-Run syntax: python mod_installer.py [game_directory_data_location]
+Run syntax: python mod_installer.py [REQUIRED:Game_directory_data_location] [OPTIONAL:Add_Fresh_configs_directory_backup]
 
 Note: First run will back up the current data\configs directory.
 
