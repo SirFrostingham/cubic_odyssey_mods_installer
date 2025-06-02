@@ -7,7 +7,7 @@ A generic mods installer, that was modeled after this Nexus Mods tweaks collecti
 - Tested on Windows 11
 
 # How to
-1. In your Downloads directory (%USERPROFILE%\Downloads), create a directory called Cubic_Odyssey - example: C:\Users\Your_User_Name\Downloads\Cubic_Odyssey\
+1. In your Downloads directory (`%USERPROFILE%\Downloads`), create a directory called Cubic_Odyssey - example: `C:\Users\Your_User_Name\Downloads\Cubic_Odyssey\`
 2. Download `mod_installer.py` and put it in the `Cubic_Odyssey` directory created in step 1
 3. Download all files listed here [SkyPhoenixMods - Cubic Odyssey - Tweakers](https://www.nexusmods.com/cubicodyssey/mods/5?tab=files) and put those zip files in the `Cubic_Odyssey` directory created in step 1
 4. Run syntax: python mod_installer.py [REQUIRED:Game_directory_data_location] [OPTIONAL:Add_Fresh_configs_directory_backup]
