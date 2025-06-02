@@ -14,7 +14,7 @@ A generic mods installer, that was modeled after this Nexus Mods tweaks collecti
 5. After the script runs, run the game.
    - Note: you will see this message as the last message for a successful install: Mod installation completed successfully
 
-Note: First run will back up the current data\configs directory.
+Note: First run will run a little slower, due to backing up the current data\configs directory.
 
 Examples:
 ```
