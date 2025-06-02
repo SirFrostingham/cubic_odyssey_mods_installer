@@ -1,5 +1,5 @@
 # Overview
-A generic mods installer, that was modeled after this Nexus Mods tweaks collection: [SkyPhoenixMods - Cubic Odyssey - Tweakers](https://www.nexusmods.com/cubicodyssey/mods/5?tab=files)
+A generic mods installer, that was modeled after this Nexus Mods tweaks collection: [SkyPhoenixMods - Cubic Odyssey - Tweakers](https://www.nexusmods.com/cubicodyssey/mods/5?tab=description)
 - This mods script uses the installation.txt file from SkyPhoenixMods's mods collection to install mods to the Cubic Odyssey game directory -> data -> configs location.
 
 # Prerequisites
