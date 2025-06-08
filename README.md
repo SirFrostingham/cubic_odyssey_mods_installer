@@ -15,8 +15,8 @@ A user-friendly mod installer for *Cubic Odyssey*, modeled after the [SkyPhoenix
    - In your Downloads directory (`%USERPROFILE%\Downloads`), create a folder named `Cubic_Odyssey`. Example: `C:\Users\Your_User_Name\Downloads\Cubic_Odyssey\`.
 
 2. **Download the Installer**:
-   - Download `mod_installer_gui__RUN-AS-ADMIN.cmd` and `ModInstaller.exe` from the [GitHub repository](https://github.com/SirFrostingham/cubic_odyssey_mods_installer).
-   - Place both files in the `Cubic_Odyssey` directory created in step 1.
+   - Download `mod_installer_gui__RUN-AS-ADMIN.cmd` from the [GitHub repository](https://github.com/SirFrostingham/cubic_odyssey_mods_installer).
+   - Place `mod_installer_gui__RUN-AS-ADMIN.cmd` in the `Cubic_Odyssey` directory created in step 1.
 
 3. **Download Mods**:
    - Download all mod `.zip` files from [SkyPhoenixMods - Cubic Odyssey - Tweakers](https://www.nexusmods.com/cubicodyssey/mods/5?tab=files).
@@ -25,15 +25,15 @@ A user-friendly mod installer for *Cubic Odyssey*, modeled after the [SkyPhoenix
 4. **Run the Installer**:
    - Navigate to the `Cubic_Odyssey` directory (e.g., `C:\Users\Your_User_Name\Downloads\Cubic_Odyssey\`).
    - Right-click `mod_installer_gui__RUN-AS-ADMIN.cmd` and select **Run as administrator**.
-   - This launches `ModInstaller.exe` with elevated privileges, opening a GUI with the following features:
-     - **Game Directory**: Enter or browse to the *Cubic Odyssey* data directory (e.g., `D:\SteamLibrary\steamapps\common\Cubic Odyssey\data`).
+   - This creates and launches `ModInstaller.exe` with elevated privileges, opening a GUI with the following features:
+     - **Game Directory**: Enter or browse to the *Cubic Odyssey* data directory (e.g., `C:\Program Files (x86)\Steam\steamapps\common\Cubic Odyssey\data`).
      - **Start Fresh Checkbox**: Check to reset configs by restoring from a backup and creating a new backup (`-startFresh 1`).
      - **Check for Updates**: Downloads the latest `mod_installer.ps1` from GitHub.
      - **Run Installer**: Applies mods to the game directory based on `Instructions.txt` in the mod `.zip` files.
      - **Launch Game**: Starts *Cubic Odyssey* via Steam (`steam://rungameid/3400000`).
 
 5. **Configure and Install**:
-   - In the GUI, set the game directory (defaults to `D:\SteamLibrary\steamapps\common\Cubic Odyssey\data` or the last saved directory).
+   - In the GUI, set the game directory (defaults to `C:\Program Files (x86)\Steam\steamapps\common\Cubic Odyssey\data` or the last saved directory).
    - Optionally check "Start Fresh" to reset configs.
    - Click **Check for Updates** to ensure the latest mod installer script is used.
    - Click **Run Installer** to apply mods. The results textbox will show progress and errors.
