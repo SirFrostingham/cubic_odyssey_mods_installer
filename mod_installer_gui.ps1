@@ -136,7 +136,7 @@ $ResultsTextBox.Location = New-Object System.Drawing.Size(20, 100)
 $ResultsTextBox.Size = New-Object System.Drawing.Size(540, 200)
 $ResultsTextBox.Multiline = $true
 $ResultsTextBox.ScrollBars = "Vertical"
-$ResultsTextBox.Text = "Be sure you downloaded mods from https://www.nexusmods.com/games/cubicodyssey/mods and put them in your directory: $localModsPath`r`n`r`nEnter the game directory and click 'Check for Updates' or 'Run Installer'.`r`n"
+$ResultsTextBox.Text = "Be sure you downloaded mods from https://www.nexusmods.com/games/cubicodyssey/mods and put them in your directory: $localModsPath`r`n`r`nEnter the game directory and click 'Check for Updates' or 'Install Mods'.`r`n"
 $Form.Controls.Add($ResultsTextBox)
 
 # Check for Updates Button
@@ -147,11 +147,11 @@ $UpdateButton.Text = "Check for Updates"
 $UpdateButton.Add_Click({ Check-ScriptUpdate })
 $Form.Controls.Add($UpdateButton)
 
-# Run Installer Button
+# Install Mods Button
 $RunButton = New-Object System.Windows.Forms.Button
 $RunButton.Location = New-Object System.Drawing.Size(180, 320)
 $RunButton.Size = New-Object System.Drawing.Size(150, 30)
-$RunButton.Text = "Run Installer"
+$RunButton.Text = "Install Mods"
 $RunButton.Add_Click({ Run-ModInstaller })
 $Form.Controls.Add($RunButton)
 
