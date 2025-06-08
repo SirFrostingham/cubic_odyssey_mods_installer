@@ -15,7 +15,7 @@ A user-friendly mod installer for *Cubic Odyssey*, modeled after the [SkyPhoenix
    - In your Downloads directory (`%USERPROFILE%\Downloads`), create a folder named `Cubic_Odyssey`. Example: `C:\Users\Your_User_Name\Downloads\Cubic_Odyssey\`.
 
 2. **Download the Installer**:
-   - Download `mod_installer_gui(RUN_AS_ADMIN).cmd` and `ModInstaller.exe` from the [GitHub repository](https://github.com/SirFrostingham/cubic_odyssey_mods_installer).
+   - Download `mod_installer_gui__RUN-AS-ADMIN.cmd` and `ModInstaller.exe` from the [GitHub repository](https://github.com/SirFrostingham/cubic_odyssey_mods_installer).
    - Place both files in the `Cubic_Odyssey` directory created in step 1.
 
 3. **Download Mods**:
@@ -24,7 +24,7 @@ A user-friendly mod installer for *Cubic Odyssey*, modeled after the [SkyPhoenix
 
 4. **Run the Installer**:
    - Navigate to the `Cubic_Odyssey` directory (e.g., `C:\Users\Your_User_Name\Downloads\Cubic_Odyssey\`).
-   - Right-click `mod_installer_gui(RUN_AS_ADMIN).cmd` and select **Run as administrator**.
+   - Right-click `mod_installer_gui__RUN-AS-ADMIN.cmd` and select **Run as administrator**.
    - This launches `ModInstaller.exe` with elevated privileges, opening a GUI with the following features:
      - **Game Directory**: Enter or browse to the *Cubic Odyssey* data directory (e.g., `D:\SteamLibrary\steamapps\common\Cubic Odyssey\data`).
      - **Start Fresh Checkbox**: Check to reset configs by restoring from a backup and creating a new backup (`-startFresh 1`).
@@ -50,7 +50,7 @@ A user-friendly mod installer for *Cubic Odyssey*, modeled after the [SkyPhoenix
 - `D:\SteamLibrary\steamapps\common\Cubic Odyssey\data`
 
 ## Troubleshooting
-- **Installer Fails to Run**: Ensure you right-click `mod_installer_gui(RUN_AS_ADMIN).cmd` and select "Run as administrator".
+- **Installer Fails to Run**: Ensure you right-click `mod_installer_gui__RUN-AS-ADMIN.cmd` and select "Run as administrator".
 - **Game Directory Not Found**: Verify the path points to the `data` folder in your *Cubic Odyssey* installation.
 - **Steam Launch Fails**: Ensure Steam is installed and logged in. Test the URI manually: `Start-Process "steam://rungameid/3400000"` in PowerShell.
 - **Mod Installation Errors**: Check that mod `.zip` files are in `C:\Users\Your_User_Name\Downloads\Cubic_Odyssey\` and contain a valid `Instructions.txt`.
