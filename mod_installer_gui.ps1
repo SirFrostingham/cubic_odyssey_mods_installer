@@ -125,7 +125,7 @@ $Form.Controls.Add($BrowseButton)
 # Start Fresh Checkbox
 $StartFreshCheckbox = New-Object System.Windows.Forms.CheckBox
 $StartFreshCheckbox.Location = New-Object System.Drawing.Size(20, 60)
-$StartFreshCheckbox.Size = New-Object System.Drawing.Size(200, 20)
+$StartFreshCheckbox.Size = New-Object System.Drawing.Size(250, 20)  # Increased width to 250 to fit full text
 $StartFreshCheckbox.Text = "Start Fresh (Reset Configs)"
 $StartFreshCheckbox.Checked = $false
 $Form.Controls.Add($StartFreshCheckbox)
