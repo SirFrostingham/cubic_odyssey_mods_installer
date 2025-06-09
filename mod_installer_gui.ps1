@@ -110,7 +110,7 @@ function Launch-Game {
 # Create the form
 $Form = New-Object System.Windows.Forms.Form
 $Form.Text = "Cubic Odyssey Mod Installer"
-$Form.Size = New-Object System.Drawing.Size(660, 400)
+$Form.Size = New-Object System.Drawing.Size(650, 400)
 $Form.StartPosition = "CenterScreen"
 
 # Font for the form
@@ -167,12 +167,13 @@ $StartFreshCheckbox.Checked = $false
 $Form.Controls.Add($StartFreshCheckbox)
 
 # Results TextBox
-$ResultsTextBox = New-Object System.Windows.Forms.TextBox
+$ResultsTextBox = New-Object System.Windows.Forms.RichTextBox  # Changed to RichTextBox
 $ResultsTextBox.Location = New-Object System.Drawing.Size(20, 100)
 $ResultsTextBox.Size = New-Object System.Drawing.Size(540, 200)
 $ResultsTextBox.Multiline = $true
 $ResultsTextBox.ScrollBars = "Vertical"
-$ResultsTextBox.Text = "Be sure you downloaded mods from https://www.nexusmods.com/games/cubicodyssey/mods and put them in your directory: $localModsPath`r`n`r`nEnter the game directory and click 'Check for Updates' or 'Install Mods'.`r`n"
+$ResultsTextBox.DetectUrls = $true  # Enable clickable URLs
+$ResultsTextBox.Text = "Be sure you downloaded mods from https://www.nexusmods.com/games/cubicodyssey/mods and put them in your directory: $localModsPath`r`n`r`nEnter the game directory and click 'Check for Updates' or 'Install Mods'."
 $Form.Controls.Add($ResultsTextBox)
 
 # Check for Updates Button
