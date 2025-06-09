@@ -129,7 +129,7 @@ $GameDirTextBox = New-Object System.Windows.Forms.TextBox
 $GameDirTextBox.Location = New-Object System.Drawing.Size(200, 20)
 $GameDirTextBox.Size = New-Object System.Drawing.Size(330, 20)
 # Load saved game directory if config file exists, else use default
-$defaultGameDir = "D:\SteamLibrary\steamapps\common\Cubic Odyssey\data"
+$defaultGameDir = "C:\Program Files (x86)\Steam\steamapps\common\Cubic Odyssey\data"  # Updated path
 if (Test-Path $configFilePath) {
     try {
         $savedGameDir = Get-Content $configFilePath -Raw -ErrorAction Stop
@@ -175,17 +175,13 @@ $ResultsTextBox.ScrollBars = "Vertical"
 $ResultsTextBox.DetectUrls = $true
 $ResultsTextBox.Add_LinkClicked({
     param($sender, $e)
-    $ResultsTextBox.Text += "Link clicked: $($e.LinkText)`r`n"  # Debug output
     try {
         Start-Process $e.LinkText -ErrorAction Stop
-        $ResultsTextBox.Text += "Opened link: $($e.LinkText)`r`n"
     } catch {
         $ResultsTextBox.Text += "Error opening link: $_`r`n"
     }
 })
-$ResultsTextBox.Text = "Be sure you downloaded mods from https://www.nexusmods.com/games/cubicodyssey/mods and put them in your directory: $localModsPath`r`n`r`nEnter the game directory and click 'Check for Updates' or 'Install Mods'."
-# Alternative RTF approach (uncomment to test if needed)
-# $ResultsTextBox.Rtf = "{\rtf1\ansi Be sure you downloaded mods from \cf1\ul https://www.nexusmods.com/games/cubicodyssey/mods\ulnone\cf0 and put them in your directory: $localModsPath\\par Enter the game directory and click 'Check for Updates' or 'Install Mods'.}"
+$ResultsTextBox.Text = "Be sure you downloaded mods from https://www.nexusmods.com/games/cubicodyssey/mods and put them in your directory: file://$localModsPath`r`n`r`nEnter the game directory and click 'Check for Updates' or 'Install Mods'."
 $Form.Controls.Add($ResultsTextBox)
 
 # Check for Updates Button
