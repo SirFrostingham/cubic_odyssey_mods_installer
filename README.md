@@ -10,8 +10,7 @@ A user-friendly mod installer for *Cubic Odyssey*, modeled after the [SkyPhoenix
 - **Internet Connection**: Needed to check for updates to the installer script from GitHub.
 
 ## Screenshot
-![image](https://github.com/user-attachments/assets/765b1f4b-b002-4fde-8795-817442ca7c5b)
-
+![image](https://github.com/user-attachments/assets/b28c7988-5d4c-4f42-af7b-f7071a138fef)
 
 ## How to Install and Use
 
