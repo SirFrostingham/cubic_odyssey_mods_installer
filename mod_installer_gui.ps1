@@ -167,12 +167,16 @@ $StartFreshCheckbox.Checked = $false
 $Form.Controls.Add($StartFreshCheckbox)
 
 # Results TextBox
-$ResultsTextBox = New-Object System.Windows.Forms.RichTextBox  # Changed to RichTextBox
+$ResultsTextBox = New-Object System.Windows.Forms.RichTextBox
 $ResultsTextBox.Location = New-Object System.Drawing.Size(20, 100)
 $ResultsTextBox.Size = New-Object System.Drawing.Size(540, 200)
 $ResultsTextBox.Multiline = $true
 $ResultsTextBox.ScrollBars = "Vertical"
-$ResultsTextBox.DetectUrls = $true  # Enable clickable URLs
+$ResultsTextBox.DetectUrls = $true
+$ResultsTextBox.Add_LinkClicked({
+    param($sender, $e)
+    Start-Process $e.LinkText
+})
 $ResultsTextBox.Text = "Be sure you downloaded mods from https://www.nexusmods.com/games/cubicodyssey/mods and put them in your directory: $localModsPath`r`n`r`nEnter the game directory and click 'Check for Updates' or 'Install Mods'."
 $Form.Controls.Add($ResultsTextBox)
 
