@@ -24,6 +24,7 @@ A user-friendly mod installer for *Cubic Odyssey*, modeled after the [SkyPhoenix
 
 3. **Download Mods**:
    - Download all mod `.zip` files from [SkyPhoenixMods - Cubic Odyssey - Tweakers](https://www.nexusmods.com/cubicodyssey/mods/5?tab=files).
+      - ...AND/OR Download other mods that follow the same format of `Instructions` and modded files in the ZIP file.
    - Place these `.zip` files in the `Cubic_Odyssey` directory.
 
 4. **Run the Installer**:
