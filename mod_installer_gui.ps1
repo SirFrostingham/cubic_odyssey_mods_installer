@@ -110,7 +110,7 @@ function Launch-Game {
 # Create the form
 $Form = New-Object System.Windows.Forms.Form
 $Form.Text = "Cubic Odyssey Mod Installer"
-$Form.Size = New-Object System.Drawing.Size(660, 400)  # Increased width to 650
+$Form.Size = New-Object System.Drawing.Size(660, 400)
 $Form.StartPosition = "CenterScreen"
 
 # Font for the form
@@ -126,7 +126,7 @@ $Form.Controls.Add($GameDirLabel)
 
 # Game Directory TextBox
 $GameDirTextBox = New-Object System.Windows.Forms.TextBox
-$GameDirTextBox.Location = New-Object System.Drawing.Size(200, 20)  # Adjusted to 200
+$GameDirTextBox.Location = New-Object System.Drawing.Size(200, 20)
 $GameDirTextBox.Size = New-Object System.Drawing.Size(330, 20)
 # Load saved game directory if config file exists, else use default
 $defaultGameDir = "D:\SteamLibrary\steamapps\common\Cubic Odyssey\data"
@@ -145,8 +145,8 @@ $Form.Controls.Add($GameDirTextBox)
 
 # Browse Button
 $BrowseButton = New-Object System.Windows.Forms.Button
-$BrowseButton.Location = New-Object System.Drawing.Size(540, 20)  # Adjusted to 540
-$BrowseButton.Size = New-Object System.Drawing.Size(90, 25)  # Increased to 90
+$BrowseButton.Location = New-Object System.Drawing.Size(540, 20)
+$BrowseButton.Size = New-Object System.Drawing.Size(90, 25)
 $BrowseButton.Text = "Browse"
 $BrowseButton.Add_Click({
     $folderBrowser = New-Object System.Windows.Forms.FolderBrowserDialog
