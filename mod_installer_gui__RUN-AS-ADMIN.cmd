@@ -46,7 +46,7 @@ if exist "%EXE_PATH%" (
 )
 
 :: Update local scripts
-echo Downloading from GitHub...
+echo Downloading '%INSTALLER_URL%' from GitHub...
 powershell -Command "Invoke-WebRequest -Uri '%INSTALLER_URL%' -OutFile '%INSTALLER_PATH%'" 2>&1
 if errorlevel 1 (
 	echo Failed to download %INSTALLER_PATH%. Please check your internet connection or GitHub URL.
@@ -55,7 +55,7 @@ if errorlevel 1 (
 )
 echo Downloaded %INSTALLER_PATH% successfully.
 
-echo mod_installer_gui.ps1 not found. Downloading from GitHub...
+echo Downloading '%GUI_SCRIPT_URL%' from GitHub...
 powershell -Command "Invoke-WebRequest -Uri '%GUI_SCRIPT_URL%' -OutFile '%SCRIPT_PATH%'" 2>&1
 if errorlevel 1 (
 	echo Failed to download %SCRIPT_PATH%. Please check your internet connection or GitHub URL.
