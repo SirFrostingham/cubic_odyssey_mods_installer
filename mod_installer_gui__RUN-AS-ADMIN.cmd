@@ -1,9 +1,9 @@
 @echo off
 :: mod_installer_gui__RUN-AS-ADMIN.cmd
-:: Launches ModInstaller.exe with administrator privileges after ensuring required files and directory are present
+:: Launches ModInstaller.exe with administrator privileges after ensuring required files and handling file locks
 
 :: Define paths
-set "BASE_DIR=C:\Users\areed\Downloads\Cubic_Odyssey"
+set "BASE_DIR=%userprofile%\Downloads\Cubic_Odyssey"
 set "SCRIPT_PATH=%BASE_DIR%\mod_installer_gui.ps1"
 set "EXE_PATH=%BASE_DIR%\ModInstaller.exe"
 set "GUI_SCRIPT_URL=https://raw.githubusercontent.com/SirFrostingham/cubic_odyssey_mods_installer/main/mod_installer_gui.ps1"
@@ -24,6 +24,7 @@ if %errorlevel% equ 0 (
 ) else (
     echo No running instances found or access denied.
 )
+ping -n 3 127.0.0.1 >nul  :: Add a 2-3 second delay to allow file release
 
 :: Create Cubic_Odyssey directory if it doesn't exist
 if not exist "%BASE_DIR%" (
@@ -49,16 +50,30 @@ if not exist "%SCRIPT_PATH%" (
     echo Downloaded %SCRIPT_PATH% successfully.
 )
 
-:: Compile the script if PS2EXE is available
+:: Compile the script if PS2EXE is available, with retry on file lock
+:compile_loop
 if exist "%SCRIPT_PATH%" (
     echo Compiling %SCRIPT_PATH% to %EXE_PATH%...
     powershell -Command "Import-Module PS2EXE; Invoke-PS2EXE -inputFile '%SCRIPT_PATH%' -outputFile '%EXE_PATH%' -Verbose" 2>&1
     if %errorlevel% equ 0 (
         echo Compilation successful.
     ) else (
-        echo Failed to compile %SCRIPT_PATH%. Check PowerShell output for details.
-        pause
-        exit /b 1
+        echo Compilation failed due to file lock or other error. Checking if file is in use...
+        if exist "%EXE_PATH%" (
+            echo Attempting to delete %EXE_PATH% to resolve lock...
+            del /F /Q "%EXE_PATH%" 2>nul
+            if errorlevel 1 (
+                echo Failed to delete %EXE_PATH%. Please close any programs using it (e.g., antivirus) and try again.
+                pause
+                exit /b 1
+            )
+            echo Retrying compilation...
+            goto compile_loop
+        ) else (
+            echo No existing EXE to delete. Check PS2EXE installation or permissions.
+            pause
+            exit /b 1
+        )
     )
 ) else (
     echo Error: %SCRIPT_PATH% not found after download attempt.
