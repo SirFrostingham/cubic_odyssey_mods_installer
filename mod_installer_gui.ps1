@@ -110,7 +110,7 @@ function Launch-Game {
 # Create the form
 $Form = New-Object System.Windows.Forms.Form
 $Form.Text = "Cubic Odyssey Mod Installer"
-$Form.Size = New-Object System.Drawing.Size(650, 400)  # Increased width to 650
+$Form.Size = New-Object System.Drawing.Size(660, 400)  # Increased width to 650
 $Form.StartPosition = "CenterScreen"
 
 # Font for the form
