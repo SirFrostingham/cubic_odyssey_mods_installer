@@ -110,7 +110,7 @@ function Launch-Game {
 # Create the form
 $Form = New-Object System.Windows.Forms.Form
 $Form.Text = "Cubic Odyssey Mod Installer"
-$Form.Size = New-Object System.Drawing.Size(600, 400)
+$Form.Size = New-Object System.Drawing.Size(650, 400)  # Increased width to 650
 $Form.StartPosition = "CenterScreen"
 
 # Font for the form
@@ -120,14 +120,14 @@ $Form.Font = $Font
 # Game Directory Label
 $GameDirLabel = New-Object System.Windows.Forms.Label
 $GameDirLabel.Location = New-Object System.Drawing.Size(20, 20)
-$GameDirLabel.Size = New-Object System.Drawing.Size(180, 20)  # Reduced to 180 to fit better
+$GameDirLabel.Size = New-Object System.Drawing.Size(180, 20)
 $GameDirLabel.Text = "Game 'data' Directory:"
 $Form.Controls.Add($GameDirLabel)
 
 # Game Directory TextBox
 $GameDirTextBox = New-Object System.Windows.Forms.TextBox
-$GameDirTextBox.Location = New-Object System.Drawing.Size(180, 20)  # Adjusted to 180 for better alignment
-$GameDirTextBox.Size = New-Object System.Drawing.Size(380, 25)  # Increased to 380 for full path visibility
+$GameDirTextBox.Location = New-Object System.Drawing.Size(200, 20)  # Adjusted to 200
+$GameDirTextBox.Size = New-Object System.Drawing.Size(400, 25)  # Increased to 400
 # Load saved game directory if config file exists, else use default
 $defaultGameDir = "D:\SteamLibrary\steamapps\common\Cubic Odyssey\data"
 if (Test-Path $configFilePath) {
@@ -145,8 +145,8 @@ $Form.Controls.Add($GameDirTextBox)
 
 # Browse Button
 $BrowseButton = New-Object System.Windows.Forms.Button
-$BrowseButton.Location = New-Object System.Drawing.Size(570, 20)  # Adjusted to 570 to fit within 600px
-$BrowseButton.Size = New-Object System.Drawing.Size(70, 25)  # Reduced to 70 for better fit
+$BrowseButton.Location = New-Object System.Drawing.Size(610, 20)  # Adjusted to 610
+$BrowseButton.Size = New-Object System.Drawing.Size(70, 25)
 $BrowseButton.Text = "Browse"
 $BrowseButton.Add_Click({
     $folderBrowser = New-Object System.Windows.Forms.FolderBrowserDialog
