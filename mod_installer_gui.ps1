@@ -120,13 +120,13 @@ $Form.Font = $Font
 # Game Directory Label
 $GameDirLabel = New-Object System.Windows.Forms.Label
 $GameDirLabel.Location = New-Object System.Drawing.Size(20, 20)
-$GameDirLabel.Size = New-Object System.Drawing.Size(160, 20)
+$GameDirLabel.Size = New-Object System.Drawing.Size(165, 20)
 $GameDirLabel.Text = "Game 'data' Directory:"
 $Form.Controls.Add($GameDirLabel)
 
 # Game Directory TextBox
 $GameDirTextBox = New-Object System.Windows.Forms.TextBox
-$GameDirTextBox.Location = New-Object System.Drawing.Size(170, 20)
+$GameDirTextBox.Location = New-Object System.Drawing.Size(155, 20)
 $GameDirTextBox.Size = New-Object System.Drawing.Size(300, 20)
 # Load saved game directory if config file exists, else use default
 $defaultGameDir = "D:\SteamLibrary\steamapps\common\Cubic Odyssey\data"
