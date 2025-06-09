@@ -45,29 +45,24 @@ if exist "%EXE_PATH%" (
 	del /q /s "%EXE_PATH%"
 )
 
-:: Check if mod_installer.ps1 exists, download if missing
-if not exist "%INSTALLER_PATH%" (
-    echo mod_installer.ps1 not found. Downloading from GitHub...
-    powershell -Command "Invoke-WebRequest -Uri '%INSTALLER_URL%' -OutFile '%INSTALLER_PATH%'" 2>&1
-    if errorlevel 1 (
-        echo Failed to download %INSTALLER_PATH%. Please check your internet connection or GitHub URL.
-        pause
-        exit /b 1
-    )
-    echo Downloaded %INSTALLER_PATH% successfully.
+:: Update local scripts
+echo Downloading from GitHub...
+powershell -Command "Invoke-WebRequest -Uri '%INSTALLER_URL%' -OutFile '%INSTALLER_PATH%'" 2>&1
+if errorlevel 1 (
+	echo Failed to download %INSTALLER_PATH%. Please check your internet connection or GitHub URL.
+	pause
+	exit /b 1
 )
+echo Downloaded %INSTALLER_PATH% successfully.
 
-:: Check if mod_installer_gui.ps1 exists, download if missing
-if not exist "%SCRIPT_PATH%" (
-    echo mod_installer_gui.ps1 not found. Downloading from GitHub...
-    powershell -Command "Invoke-WebRequest -Uri '%GUI_SCRIPT_URL%' -OutFile '%SCRIPT_PATH%'" 2>&1
-    if errorlevel 1 (
-        echo Failed to download %SCRIPT_PATH%. Please check your internet connection or GitHub URL.
-        pause
-        exit /b 1
-    )
-    echo Downloaded %SCRIPT_PATH% successfully.
+echo mod_installer_gui.ps1 not found. Downloading from GitHub...
+powershell -Command "Invoke-WebRequest -Uri '%GUI_SCRIPT_URL%' -OutFile '%SCRIPT_PATH%'" 2>&1
+if errorlevel 1 (
+	echo Failed to download %SCRIPT_PATH%. Please check your internet connection or GitHub URL.
+	pause
+	exit /b 1
 )
+echo Downloaded %SCRIPT_PATH% successfully.
 
 :: Install PS2EXE if not already installed (silent if already present)
 powershell -Command "if (-not (Get-Module -ListAvailable -Name PS2EXE)) { Install-Module -Name PS2EXE -Force -Scope CurrentUser }" 2>nul
