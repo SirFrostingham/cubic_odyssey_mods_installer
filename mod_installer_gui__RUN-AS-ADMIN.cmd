@@ -5,8 +5,10 @@
 :: Define paths
 set "targetDir=%userprofile%\Downloads\Cubic_Odyssey"
 set "SCRIPT_PATH=%targetDir%\mod_installer_gui.ps1"
+set "INSTALLER_PATH=%targetDir%\mod_installer.ps1"
 set "EXE_PATH=%targetDir%\ModInstaller.exe"
 set "GUI_SCRIPT_URL=https://raw.githubusercontent.com/SirFrostingham/cubic_odyssey_mods_installer/main/mod_installer_gui.ps1"
+set "INSTALLER_URL=https://raw.githubusercontent.com/SirFrostingham/cubic_odyssey_mods_installer/main/mod_installer.ps1"
 
 :: Check if running as administrator
 net session >nul 2>&1
@@ -37,6 +39,18 @@ if %errorlevel% equ 0 (
     echo Closed existing instances.
 ) else (
     echo No running instances found or access denied.
+)
+
+:: Check if mod_installer.ps1 exists, download if missing
+if not exist "%INSTALLER_PATH%" (
+    echo mod_installer.ps1 not found. Downloading from GitHub...
+    powershell -Command "Invoke-WebRequest -Uri '%INSTALLER_URL%' -OutFile '%INSTALLER_PATH%'" 2>&1
+    if errorlevel 1 (
+        echo Failed to download %INSTALLER_PATH%. Please check your internet connection or GitHub URL.
+        pause
+        exit /b 1
+    )
+    echo Downloaded %INSTALLER_PATH% successfully.
 )
 
 :: Check if mod_installer_gui.ps1 exists, download if missing
