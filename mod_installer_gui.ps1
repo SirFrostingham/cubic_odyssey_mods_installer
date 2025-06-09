@@ -175,9 +175,17 @@ $ResultsTextBox.ScrollBars = "Vertical"
 $ResultsTextBox.DetectUrls = $true
 $ResultsTextBox.Add_LinkClicked({
     param($sender, $e)
-    Start-Process $e.LinkText
+    $ResultsTextBox.Text += "Link clicked: $($e.LinkText)`r`n"  # Debug output
+    try {
+        Start-Process $e.LinkText -ErrorAction Stop
+        $ResultsTextBox.Text += "Opened link: $($e.LinkText)`r`n"
+    } catch {
+        $ResultsTextBox.Text += "Error opening link: $_`r`n"
+    }
 })
 $ResultsTextBox.Text = "Be sure you downloaded mods from https://www.nexusmods.com/games/cubicodyssey/mods and put them in your directory: $localModsPath`r`n`r`nEnter the game directory and click 'Check for Updates' or 'Install Mods'."
+# Alternative RTF approach (uncomment to test if needed)
+# $ResultsTextBox.Rtf = "{\rtf1\ansi Be sure you downloaded mods from \cf1\ul https://www.nexusmods.com/games/cubicodyssey/mods\ulnone\cf0 and put them in your directory: $localModsPath\\par Enter the game directory and click 'Check for Updates' or 'Install Mods'.}"
 $Form.Controls.Add($ResultsTextBox)
 
 # Check for Updates Button
