@@ -1,10 +1,11 @@
 @echo off
 :: mod_installer_gui__RUN-AS-ADMIN.cmd
-:: Launches ModInstaller.exe with administrator privileges after ensuring required files are present
+:: Launches ModInstaller.exe with administrator privileges after ensuring required files and directory are present
 
 :: Define paths
-set "SCRIPT_PATH=C:\Users\areed\Downloads\Cubic_Odyssey\mod_installer_gui.ps1"
-set "EXE_PATH=C:\Users\areed\Downloads\Cubic_Odyssey\ModInstaller.exe"
+set "BASE_DIR=C:\Users\areed\Downloads\Cubic_Odyssey"
+set "SCRIPT_PATH=%BASE_DIR%\mod_installer_gui.ps1"
+set "EXE_PATH=%BASE_DIR%\ModInstaller.exe"
 set "GUI_SCRIPT_URL=https://raw.githubusercontent.com/SirFrostingham/cubic_odyssey_mods_installer/main/mod_installer_gui.ps1"
 
 :: Check if running as administrator
@@ -22,6 +23,18 @@ if %errorlevel% equ 0 (
     echo Closed existing instances.
 ) else (
     echo No running instances found or access denied.
+)
+
+:: Create Cubic_Odyssey directory if it doesn't exist
+if not exist "%BASE_DIR%" (
+    echo Creating directory %BASE_DIR%...
+    mkdir "%BASE_DIR%" 2>nul
+    if errorlevel 1 (
+        echo Failed to create directory %BASE_DIR%. Please run as administrator or create it manually.
+        pause
+        exit /b 1
+    )
+    echo Directory %BASE_DIR% created successfully.
 )
 
 :: Check if mod_installer_gui.ps1 exists, download if missing
