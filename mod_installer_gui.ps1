@@ -121,7 +121,7 @@ $Form.Font = $Font
 $GameDirLabel = New-Object System.Windows.Forms.Label
 $GameDirLabel.Location = New-Object System.Drawing.Size(20, 20)
 $GameDirLabel.Size = New-Object System.Drawing.Size(150, 20)
-$GameDirLabel.Text = "Game Directory:"
+$GameDirLabel.Text = "Game 'data' Directory:"
 $Form.Controls.Add($GameDirLabel)
 
 # Game Directory TextBox
@@ -172,7 +172,7 @@ $ResultsTextBox.Location = New-Object System.Drawing.Size(20, 100)
 $ResultsTextBox.Size = New-Object System.Drawing.Size(540, 200)
 $ResultsTextBox.Multiline = $true
 $ResultsTextBox.ScrollBars = "Vertical"
-$ResultsTextBox.Text = "Be sure you downloaded mods from https://www.nexusmods.com/games/cubicodyssey/mods and put them in your directory: $localModsPath`r`n`r`nEnter the game directory and click 'Check for Updates' or 'Install Mods'.`r`n"
+$ResultsTextBox.Text = "Be sure you downloaded mods from https://www.nexusmods.com/games/cubicodyssey/mods and put the ZIP files in your directory: $localModsPath`r`n`r`nEnter the game directory and click 'Check for Updates' or 'Install Mods'.`r`n"
 $Form.Controls.Add($ResultsTextBox)
 
 # Check for Updates Button
