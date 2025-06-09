@@ -41,6 +41,10 @@ if %errorlevel% equ 0 (
     echo No running instances found or access denied.
 )
 
+if exist "%EXE_PATH%" (
+	del /q /s "%EXE_PATH%"
+)
+
 :: Check if mod_installer.ps1 exists, download if missing
 if not exist "%INSTALLER_PATH%" (
     echo mod_installer.ps1 not found. Downloading from GitHub...
