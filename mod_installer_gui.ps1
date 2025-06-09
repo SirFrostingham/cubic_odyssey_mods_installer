@@ -120,14 +120,14 @@ $Form.Font = $Font
 # Game Directory Label
 $GameDirLabel = New-Object System.Windows.Forms.Label
 $GameDirLabel.Location = New-Object System.Drawing.Size(20, 20)
-$GameDirLabel.Size = New-Object System.Drawing.Size(165, 20)
+$GameDirLabel.Size = New-Object System.Drawing.Size(200, 20)  # Increased width to 200
 $GameDirLabel.Text = "Game 'data' Directory:"
 $Form.Controls.Add($GameDirLabel)
 
 # Game Directory TextBox
 $GameDirTextBox = New-Object System.Windows.Forms.TextBox
-$GameDirTextBox.Location = New-Object System.Drawing.Size(155, 20)
-$GameDirTextBox.Size = New-Object System.Drawing.Size(300, 20)
+$GameDirTextBox.Location = New-Object System.Drawing.Size(170, 20)
+$GameDirTextBox.Size = New-Object System.Drawing.Size(350, 25)  # Increased width to 350, height to 25
 # Load saved game directory if config file exists, else use default
 $defaultGameDir = "D:\SteamLibrary\steamapps\common\Cubic Odyssey\data"
 if (Test-Path $configFilePath) {
@@ -145,7 +145,7 @@ $Form.Controls.Add($GameDirTextBox)
 
 # Browse Button
 $BrowseButton = New-Object System.Windows.Forms.Button
-$BrowseButton.Location = New-Object System.Drawing.Size(480, 20)
+$BrowseButton.Location = New-Object System.Drawing.Size(560, 20)  # Adjusted to 560 for new TextBox width
 $BrowseButton.Size = New-Object System.Drawing.Size(80, 25)
 $BrowseButton.Text = "Browse"
 $BrowseButton.Add_Click({
