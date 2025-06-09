@@ -120,7 +120,7 @@ $Form.Font = $Font
 # Game Directory Label
 $GameDirLabel = New-Object System.Windows.Forms.Label
 $GameDirLabel.Location = New-Object System.Drawing.Size(20, 20)
-$GameDirLabel.Size = New-Object System.Drawing.Size(150, 20)
+$GameDirLabel.Size = New-Object System.Drawing.Size(160, 20)
 $GameDirLabel.Text = "Game 'data' Directory:"
 $Form.Controls.Add($GameDirLabel)
 
