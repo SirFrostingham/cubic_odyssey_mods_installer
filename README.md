@@ -9,6 +9,10 @@ A user-friendly mod installer for *Cubic Odyssey*, modeled after the [SkyPhoenix
 - **Steam**: Required to launch *Cubic Odyssey* via the installer.
 - **Internet Connection**: Needed to check for updates to the installer script from GitHub.
 
+## Screenshot
+![image](https://github.com/user-attachments/assets/765b1f4b-b002-4fde-8795-817442ca7c5b)
+
+
 ## How to Install and Use
 
 1. **Create the Mods Directory**:
