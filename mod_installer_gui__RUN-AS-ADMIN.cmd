@@ -5,7 +5,7 @@ if not exist "%targetDir%" (
     echo Directory does not exist. Creating...
     mkdir "%targetDir%"
 ) else (
-    echo Directory already exists.
+    REM echo Directory already exists.
 )
 
 pushd "%targetDir%"
