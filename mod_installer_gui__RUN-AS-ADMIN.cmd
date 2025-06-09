@@ -10,10 +10,15 @@ if not exist "%targetDir%" (
 
 pushd "%targetDir%"
 
+REM close existing ModInstaller instances
+taskkill /IM "ModInstaller.exe"
+
+REM build ModInstaller
 powershell Install-Module -Name PS2EXE -Force
 powershell Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy Bypass
 powershell Invoke-PS2EXE -inputFile "%targetDir%\mod_installer_gui.ps1" -outputFile "%targetDir%\ModInstaller.exe"
-REM python mod_installer.py "D:\SteamLibrary\steamapps\common\Cubic Odyssey\data"
+
+REM Run ModInstaller
 ModInstaller.exe
 
 popd
