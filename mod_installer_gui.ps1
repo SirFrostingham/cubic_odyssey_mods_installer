@@ -4,25 +4,61 @@ Add-Type -AssemblyName System.Drawing
 
 # GitHub repository details
 $repoUrl = "https://raw.githubusercontent.com/SirFrostingham/cubic_odyssey_mods_installer/main/mod_installer.ps1"
+$guiScriptUrl = "https://raw.githubusercontent.com/SirFrostingham/cubic_odyssey_mods_installer/main/mod_installer_gui.ps1"
+$cmdScriptUrl = "https://raw.githubusercontent.com/SirFrostingham/cubic_odyssey_mods_installer/main/mod_installer_gui__RUN-AS-ADMIN.cmd"
 $localModsPath = "$env:USERPROFILE\Downloads\Cubic_Odyssey\"
 $localScriptPath = "$env:USERPROFILE\Downloads\Cubic_Odyssey\mod_installer.ps1"
+$localGuiScriptPath = "$env:USERPROFILE\Downloads\Cubic_Odyssey\mod_installer_gui.ps1"
+$localCmdScriptPath = "$env:USERPROFILE\Downloads\Cubic_Odyssey\mod_installer_gui__RUN-AS-ADMIN.cmd"
 $configFilePath = "$env:USERPROFILE\Downloads\Cubic_Odyssey\mod_installer_config.txt"
 
 # Function to check for updates from GitHub
 function Check-ScriptUpdate {
+    $updatesApplied = $false
     try {
+        # Check and update mod_installer.ps1
         $webContent = Invoke-RestMethod -Uri $repoUrl -ErrorAction Stop
         $localContent = if (Test-Path $localScriptPath) { Get-Content $localScriptPath -Raw } else { "" }
         if ($webContent -ne $localContent) {
             $webContent | Out-File -FilePath $localScriptPath -Force
             $ResultsTextBox.Text += "Updated mod_installer.ps1 from GitHub.`r`n"
             Write-Host "Updated mod_installer.ps1 from GitHub."
-            return $true
+            $updatesApplied = $true
         } else {
             $ResultsTextBox.Text += "mod_installer.ps1 is up to date.`r`n"
             Write-Host "mod_installer.ps1 is up to date."
-            return $false
         }
+
+        # Check and update mod_installer_gui.ps1
+        $webContent = Invoke-RestMethod -Uri $guiScriptUrl -ErrorAction Stop
+        $localContent = if (Test-Path $localGuiScriptPath) { Get-Content $localGuiScriptPath -Raw } else { "" }
+        if ($webContent -ne $localContent) {
+            $webContent | Out-File -FilePath $localGuiScriptPath -Force
+            $ResultsTextBox.Text += "Updated mod_installer_gui.ps1 from GitHub.`r`n"
+            Write-Host "Updated mod_installer_gui.ps1 from GitHub."
+            $updatesApplied = $true
+        } else {
+            $ResultsTextBox.Text += "mod_installer_gui.ps1 is up to date.`r`n"
+            Write-Host "mod_installer_gui.ps1 is up to date."
+        }
+
+        # Check and update mod_installer_gui__RUN-AS-ADMIN.cmd
+        $webContent = Invoke-RestMethod -Uri $cmdScriptUrl -ErrorAction Stop
+        $localContent = if (Test-Path $localCmdScriptPath) { Get-Content $localCmdScriptPath -Raw } else { "" }
+        if ($webContent -ne $localContent) {
+            $webContent | Out-File -FilePath $localCmdScriptPath -Force
+            $ResultsTextBox.Text += "Updated mod_installer_gui__RUN-AS-ADMIN.cmd from GitHub.`r`n"
+            Write-Host "Updated mod_installer_gui__RUN-AS-ADMIN.cmd from GitHub."
+            $updatesApplied = $true
+        } else {
+            $ResultsTextBox.Text += "mod_installer_gui__RUN-AS-ADMIN.cmd is up to date.`r`n"
+            Write-Host "mod_installer_gui__RUN-AS-ADMIN.cmd is up to date."
+        }
+
+        if (-not $updatesApplied) {
+            $ResultsTextBox.Text += "All files are up to date.`r`n"
+        }
+        return $updatesApplied
     } catch {
         $ResultsTextBox.Text += "Error checking for updates: $_`r`n"
         Write-Host "Error checking for updates: $_"
@@ -125,7 +161,7 @@ $Form.Controls.Add($BrowseButton)
 # Start Fresh Checkbox
 $StartFreshCheckbox = New-Object System.Windows.Forms.CheckBox
 $StartFreshCheckbox.Location = New-Object System.Drawing.Size(20, 60)
-$StartFreshCheckbox.Size = New-Object System.Drawing.Size(250, 20)  # Increased width to 250 to fit full text
+$StartFreshCheckbox.Size = New-Object System.Drawing.Size(250, 20)
 $StartFreshCheckbox.Text = "Start Fresh (Reset Configs)"
 $StartFreshCheckbox.Checked = $false
 $Form.Controls.Add($StartFreshCheckbox)
@@ -148,33 +184,4 @@ $UpdateButton.Add_Click({ Check-ScriptUpdate })
 $Form.Controls.Add($UpdateButton)
 
 # Install Mods Button
-$RunButton = New-Object System.Windows.Forms.Button
-$RunButton.Location = New-Object System.Drawing.Size(180, 320)
-$RunButton.Size = New-Object System.Drawing.Size(150, 30)
-$RunButton.Text = "Install Mods"
-$RunButton.Add_Click({ Run-ModInstaller })
-$Form.Controls.Add($RunButton)
-
-# Launch Game Button
-$LaunchButton = New-Object System.Windows.Forms.Button
-$LaunchButton.Location = New-Object System.Drawing.Size(340, 320)
-$LaunchButton.Size = New-Object System.Drawing.Size(150, 30)
-$LaunchButton.Text = "Launch Game"
-$LaunchButton.Add_Click({ Launch-Game })
-$Form.Controls.Add($LaunchButton)
-
-# Save game directory when form closes
-$Form.Add_FormClosing({
-    try {
-        $gameDir = $GameDirTextBox.Text.Trim()
-        if ($gameDir) {
-            $gameDir | Out-File -FilePath $configFilePath -Force
-            Write-Host "Saved game directory to $configFilePath"
-        }
-    } catch {
-        $ResultsTextBox.Text += "Error saving config file: $_`r`n"
-    }
-})
-
-# Show the form
-[void]$Form.ShowDialog()
+$RunButton = New
