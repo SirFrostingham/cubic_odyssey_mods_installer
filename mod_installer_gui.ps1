@@ -184,4 +184,33 @@ $UpdateButton.Add_Click({ Check-ScriptUpdate })
 $Form.Controls.Add($UpdateButton)
 
 # Install Mods Button
-$RunButton = New
+$RunButton = New-Object System.Windows.Forms.Button
+$RunButton.Location = New-Object System.Drawing.Size(180, 320)
+$RunButton.Size = New-Object System.Drawing.Size(150, 30)
+$RunButton.Text = "Install Mods"
+$RunButton.Add_Click({ Run-ModInstaller })
+$Form.Controls.Add($RunButton)
+
+# Launch Game Button
+$LaunchButton = New-Object System.Windows.Forms.Button
+$LaunchButton.Location = New-Object System.Drawing.Size(340, 320)
+$LaunchButton.Size = New-Object System.Drawing.Size(150, 30)
+$LaunchButton.Text = "Launch Game"
+$LaunchButton.Add_Click({ Launch-Game })
+$Form.Controls.Add($LaunchButton)
+
+# Save game directory when form closes
+$Form.Add_FormClosing({
+    try {
+        $gameDir = $GameDirTextBox.Text.Trim()
+        if ($gameDir) {
+            $gameDir | Out-File -FilePath $configFilePath -Force
+            Write-Host "Saved game directory to $configFilePath"
+        }
+    } catch {
+        $ResultsTextBox.Text += "Error saving config file: $_`r`n"
+    }
+})
+
+# Show the form
+[void]$Form.ShowDialog()
