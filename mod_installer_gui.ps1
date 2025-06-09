@@ -110,7 +110,7 @@ function Launch-Game {
 # Create the form
 $Form = New-Object System.Windows.Forms.Form
 $Form.Text = "Cubic Odyssey Mod Installer"
-$Form.Size = New-Object System.Drawing.Size(650, 400)  # Increased width to 650
+$Form.Size = New-Object System.Drawing.Size(600, 400)
 $Form.StartPosition = "CenterScreen"
 
 # Font for the form
@@ -120,14 +120,14 @@ $Form.Font = $Font
 # Game Directory Label
 $GameDirLabel = New-Object System.Windows.Forms.Label
 $GameDirLabel.Location = New-Object System.Drawing.Size(20, 20)
-$GameDirLabel.Size = New-Object System.Drawing.Size(180, 20)
+$GameDirLabel.Size = New-Object System.Drawing.Size(180, 20)  # Increased to 180 for "Game 'data' Directory:"
 $GameDirLabel.Text = "Game 'data' Directory:"
 $Form.Controls.Add($GameDirLabel)
 
 # Game Directory TextBox
 $GameDirTextBox = New-Object System.Windows.Forms.TextBox
-$GameDirTextBox.Location = New-Object System.Drawing.Size(200, 20)  # Adjusted to 200
-$GameDirTextBox.Size = New-Object System.Drawing.Size(400, 25)  # Increased to 400
+$GameDirTextBox.Location = New-Object System.Drawing.Size(190, 20)  # Adjusted to 190 for label width
+$GameDirTextBox.Size = New-Object System.Drawing.Size(330, 20)  # Increased to 330 for better path visibility
 # Load saved game directory if config file exists, else use default
 $defaultGameDir = "D:\SteamLibrary\steamapps\common\Cubic Odyssey\data"
 if (Test-Path $configFilePath) {
@@ -145,8 +145,8 @@ $Form.Controls.Add($GameDirTextBox)
 
 # Browse Button
 $BrowseButton = New-Object System.Windows.Forms.Button
-$BrowseButton.Location = New-Object System.Drawing.Size(610, 20)  # Adjusted to 610
-$BrowseButton.Size = New-Object System.Drawing.Size(70, 25)
+$BrowseButton.Location = New-Object System.Drawing.Size(530, 20)  # Adjusted to 530 for new TextBox width
+$BrowseButton.Size = New-Object System.Drawing.Size(80, 25)
 $BrowseButton.Text = "Browse"
 $BrowseButton.Add_Click({
     $folderBrowser = New-Object System.Windows.Forms.FolderBrowserDialog
@@ -172,7 +172,7 @@ $ResultsTextBox.Location = New-Object System.Drawing.Size(20, 100)
 $ResultsTextBox.Size = New-Object System.Drawing.Size(540, 200)
 $ResultsTextBox.Multiline = $true
 $ResultsTextBox.ScrollBars = "Vertical"
-$ResultsTextBox.Text = "Be sure you downloaded mods from https://www.nexusmods.com/games/cubicodyssey/mods and put the ZIP files in your directory: $localModsPath`r`n`r`nEnter the game directory and click 'Check for Updates' or 'Install Mods'.`r`n"
+$ResultsTextBox.Text = "Be sure you downloaded mods from https://www.nexusmods.com/games/cubicodyssey/mods and put them in your directory: $localModsPath`r`n`r`nEnter the game directory and click 'Check for Updates' or 'Install Mods'.`r`n"
 $Form.Controls.Add($ResultsTextBox)
 
 # Check for Updates Button
